@@ -3,8 +3,10 @@ from typing import Optional
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseSettings
-
+from rich.console import Console
 from models.customer import Customer
+
+console = Console()
 
 class Settings(BaseSettings):
     # database configurations
@@ -20,5 +22,6 @@ class Settings(BaseSettings):
 
 async def initiate_database():
     client = AsyncIOMotorClient(Settings().DATABASE_URL)
+    console.log("client:", client)
     await init_beanie(database=client.get_default_database(),
                       document_models=[Customer])
