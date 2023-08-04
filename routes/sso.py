@@ -68,9 +68,9 @@ async def auth_init_facebook(campaignName: str = Query(..., description="Campaig
 @router.get("/facebook/auth/callback", summary="FB第三方登入 Callback")
 async def auth_callback_facebook(request: Request):
     """Verify login"""
-    state = request.query_params.get("state", {}).replace("'", "\"")
-    state = json.loads(state)
-    campaign_name = state["campaignName"]
+    # state = request.query_params.get("state", {}).replace("'", "\"")
+    # state = json.loads(state)
+    # campaign_name = state["campaignName"]
     info = await facebook_sso.verify_and_process(request)
     # result = await Customer.find_one(Customer.campaign==campaign_name, Customer.sso_id== info.id)
     # if result is None:
