@@ -1,5 +1,5 @@
-from app.models.customer import Customer
-from app.schema.valdate import PyObjectId
+from models.customer import Customer
+from schema.valdate import PyObjectId
 from dotenv import load_dotenv
 from fastapi import APIRouter, HTTPException, Query
 from fastapi_sso.sso.google import GoogleSSO

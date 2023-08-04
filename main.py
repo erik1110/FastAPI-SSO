@@ -3,11 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBearer
 from fastapi.openapi.utils import get_openapi
-from app.routes import docs
-from app.routes.sso import router as SsoRouter
-import logging
-from datetime import datetime
-from app.database import initiate_database
+from routes import docs
+from routes.sso import router as SsoRouter
+from database import initiate_database
 
 # 自訂 Swagger 文件
 def custom_openapi():
