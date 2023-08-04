@@ -72,15 +72,15 @@ async def auth_callback_facebook(request: Request):
     state = json.loads(state)
     campaign_name = state["campaignName"]
     info = await facebook_sso.verify_and_process(request)
-    result = await Customer.find_one(Customer.campaign==campaign_name, Customer.sso_id== info.id)
-    if result is None:
-        customer = Customer(campaign=campaign_name,
-                            sso="google",
-                            sso_id=info.id,
-                            info=info,
-        )
-        result = await customer.create()
-    return result
+    # result = await Customer.find_one(Customer.campaign==campaign_name, Customer.sso_id== info.id)
+    # if result is None:
+    #     customer = Customer(campaign=campaign_name,
+    #                         sso="google",
+    #                         sso_id=info.id,
+    #                         info=info,
+    #     )
+    #     result = await customer.create()
+    return info
 
 @router.get("/userInfo", summary="查詢使用者資訊")
 async def get_user_info(userId: PyObjectId = Query(..., description="使用者ID")):
