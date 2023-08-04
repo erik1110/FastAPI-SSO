@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY . .
 
-# COPY .env /code/.env
+COPY .env /code/.env
 
 # 暴露應用程式的埠號
 EXPOSE 8080
