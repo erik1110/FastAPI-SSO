@@ -21,9 +21,13 @@ class Settings(BaseSettings):
         orm_mode = True
 
 async def initiate_database():
-    client = AsyncIOMotorClient(Settings().DATABASE_URL)
-    console.log("client:", client)
-    console.log('----------')
-    console.log(client.get_default_database())
-    await init_beanie(database=client.get_default_database(),
-                      document_models=[Customer])
+    try:
+        client = AsyncIOMotorClient(Settings().DATABASE_URL)
+        console.log("client:", client)
+        console.log('----------')
+        db = client.get_default_database()
+        console.log(db)
+        await init_beanie(database=db, document_models=[Customer])
+    except Exception as e:
+        console.log("Error occurred:", e)
+
