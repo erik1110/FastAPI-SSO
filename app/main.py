@@ -9,18 +9,6 @@ import logging
 from datetime import datetime
 from app.database import initiate_database
 
-log_filename = "./app/log/" + datetime.now().strftime('%Y-%m-%d') + ".log"
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(name)s %(levelname)s %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
-    filename=log_filename,
-    filemode='a'
-)
-# 設定 logger
-logger = logging.getLogger(__name__)
-
 # 自訂 Swagger 文件
 def custom_openapi():
     if app.openapi_schema:
