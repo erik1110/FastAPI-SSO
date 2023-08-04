@@ -38,7 +38,7 @@ def get_application():
 
     app.include_router(docs.router)
     app.include_router(SsoRouter, tags=["第三方登入"], prefix="/sso")
-    app.mount("/static", StaticFiles(directory="app/static"), name="static")
+    app.mount("/static", StaticFiles(directory="static"), name="static")
 
     return app
 
